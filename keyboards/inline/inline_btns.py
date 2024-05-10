@@ -15,7 +15,7 @@ def show_channels():
 def premium_contents():
     prcon = InlineKeyboardMarkup(row_width=1)
 
-    prcon.insert(InlineKeyboardButton(text="New Diyorbek January Marathon ⚡", callback_data='Buy Something'))
+    # prcon.insert(InlineKeyboardButton(text="New Diyorbek January Marathon ⚡", callback_data='Buy Something'))
     prcon.insert(InlineKeyboardButton(text=" 5 STARS ⚡", callback_data='Buy Something2'))
 
 
