@@ -218,34 +218,34 @@ async def subchanneldone(message: types.Message):
 
 
 
-# @dp.callback_query_handler(text="Buy Something")
-# async def balance_handler(message: types.Message):
-#     db.count_referrer(message.from_user.id)
-#     user_id = message.from_user.id
-#     amount_spent = 5
-#     await bot.delete_message(message.from_user.id, message.message.message_id)
-#     if not db.purchased(message.from_user.id):
-#         user_balance = db.get_user_balance(user_id)
-#         if user_balance is None:
-#             user_balance = 0
-#         if user_balance >= amount_spent:
-#             if db.deduct_balance(user_id, amount_spent):
-#                 # Inform the user about the successful purchase
-#                 await bot.send_message(message.from_user.id, f"Your Purchase was successful‼✅\n\nYour updated balance: "
-#                                                              f"{user_balance - amount_spent} points")
-#                 chat_id = -1002125536910
-#                 invite_link = await bot.create_chat_invite_link(chat_id=chat_id, member_limit=1)
-#                 await bot.send_message(message.from_user.id, f"Here is your invite link: {invite_link.invite_link}")
+@dp.callback_query_handler(text="Buy Something")
+async def balance_handler(message: types.Message):
+    db.count_referrer(message.from_user.id)
+    user_id = message.from_user.id
+    amount_spent = 5
+    await bot.delete_message(message.from_user.id, message.message.message_id)
+    if not db.purchased(message.from_user.id):
+        user_balance = db.get_user_balance(user_id)
+        if user_balance is None:
+            user_balance = 0
+        if user_balance >= amount_spent:
+            if db.deduct_balance(user_id, amount_spent):
+                # Inform the user about the successful purchase
+                await bot.send_message(message.from_user.id, f"Your Purchase was successful‼✅\n\nYour updated balance: "
+                                                             f"{user_balance - amount_spent} points")
+                chat_id = -1002139663305
+                invite_link = await bot.create_chat_invite_link(chat_id=chat_id, member_limit=1)
+                await bot.send_message(message.from_user.id, f"Here is your invite link: {invite_link.invite_link}")
                 
-#                 db.DSAT_purchased(message.from_user.id)
-#                 db.del_ref(message.from_user.id)
-#             else:
-#                 await bot.send_message(message.from_user.id, "Failed to deduct balance. Please try again later.")
-#         else:
-#             await bot.send_message(message.from_user.id, f"You don't have enough points. You need to gain {amount_spent - user_balance} more points !")
+                db.DSAT_purchased(message.from_user.id)
+                db.del_ref(message.from_user.id)
+            else:
+                await bot.send_message(message.from_user.id, "Failed to deduct balance. Please try again later.")
+        else:
+            await bot.send_message(message.from_user.id, f"You don't have enough points. You need to gain {amount_spent - user_balance} more points !")
 
-#     else:
-#         await bot.send_message(message.from_user.id, f"You have already purchased this product, {message.from_user.first_name}(@{message.from_user.username})☺")
+    else:
+        await bot.send_message(message.from_user.id, f"You have already purchased this product, {message.from_user.first_name}(@{message.from_user.username})☺")
 
 
 @dp.callback_query_handler(text="Buy Something2")
